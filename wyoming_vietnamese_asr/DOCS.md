@@ -8,7 +8,6 @@
 
 ## Configuration
 
-- **embedding_model**: Model for embeddings (e.g., `qwen3-embedding:4b`).
 - **log_level**: System logging level (`info`, `debug`, `warn`, `error`).
 
 ## Integration

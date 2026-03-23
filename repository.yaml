@@ -1,5 +1,3 @@
-name: "hassos-apps"
-description: "Collection of Home Assistant add-ons"
-maintainer: "gnolnos <gnolnos@users.noreply.github.com>"
-git: "https://github.com/gnolnos/hassos-apps"
-issues: "https://github.com/gnolnos/hassos-apps/issues"
+name: "Gnolnos's Hassos-Apps"
+description: "Collection of Gnolnos's Home Assistant add-ons"
+maintainer: "gnolnos <info@sonlong.name.vn>"

@@ -14,7 +14,7 @@ COPY run.sh /run.sh
 RUN chmod a+x /run.sh
 
 # Create data directory for models
-RUN mkdir -p /data
+RUN mkdir -p /config
 
 EXPOSE 10400 8090
 
