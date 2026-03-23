@@ -18,4 +18,6 @@ RUN mkdir -p /config
 
 EXPOSE 10400 8090
 
+# Use s6-overlay as init system (required by HA add-ons)
+ENTRYPOINT ["/init"]
 CMD ["/run.sh"]
