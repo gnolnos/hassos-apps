@@ -1,12 +1,6 @@
 #!/usr/bin/env python3
 """
 Download Vietnamese ASR model from HuggingFace.
-Files needed:
-- encoder-epoch-20-avg-10.onnx
-- decoder-epoch-20-avg-10.onnx
-- joiner-epoch-20-avg-10.onnx
-- tokens.txt
-- bpe.model
 """
 
 import os
@@ -20,7 +14,7 @@ except ImportError:
     sys.exit(1)
 
 REPO_ID = "hynt/Zipformer-30M-RNNT-6000h"
-MODEL_DIR = Path(os.getenv("MODEL_PATH", "/data/model"))
+MODEL_DIR = Path(os.getenv("MODEL_PATH", "/config/model"))
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 FILES = [

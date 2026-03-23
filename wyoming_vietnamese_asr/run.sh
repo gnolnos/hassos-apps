@@ -5,13 +5,13 @@ CONFIG_PATH=/data/options.json
 
 # Read configuration
 LOG_LEVEL=$(jq --raw-output '.log_level // "info"' "$CONFIG_PATH")
-EXTERNAL_MODEL_PATH=$(jq --raw-output '.external_model_path // "/data/model"' "$CONFIG_PATH")
+EXTERNAL_MODEL_PATH=$(jq --raw-output '.external_model_path // "/config/model"' "$CONFIG_PATH")
 
 # Set log level
 export RUST_LOG="${LOG_LEVEL}"
 export LOG_LEVEL="${LOG_LEVEL}"
 
-# Set model path (default: /data/model)
+# Set model path (default: /config/model)
 export MODEL_PATH="${EXTERNAL_MODEL_PATH}"
 
 echo "====================================="

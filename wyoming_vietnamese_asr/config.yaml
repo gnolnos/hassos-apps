@@ -12,12 +12,12 @@ startup: system
 boot: auto
 map:
   - type: config
-    path: /data
+    path: /config
 ports:
   10400/tcp: 10400
   8090/tcp: 8090
 options:
-  external_model_path: "/data/model"  # Optional: external model dir (host path inside container). Default: /data/model (persisted in addon config)
+  external_model_path: "/config/model"  # Optional: external model dir (host path inside container). Default: /data/model (persisted in addon config)
   log_level: "info"
 schema:
   external_model_path: "str?"
