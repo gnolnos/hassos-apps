@@ -11,8 +11,8 @@ arch:
 startup: system
 boot: auto
 map:
-  - type: config
-    path: /config
+  - addon_config:rw
+  - homeassistant_config:rw
 ports:
   10400/tcp: 10400
   8090/tcp: 8090
