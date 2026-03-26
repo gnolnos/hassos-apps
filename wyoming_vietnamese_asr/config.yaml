@@ -17,7 +17,7 @@ ports:
   10400/tcp: 10400
   8090/tcp: 8090
 options:
-  external_model_path: "/config/model"  # Optional: external model dir (host path inside container). Default: /config/model
+  external_model_path: "/data/model"  # Optional: external model dir (host path inside container). Default: /config/model
   log_level: "info"
 schema:
   external_model_path: "str?"

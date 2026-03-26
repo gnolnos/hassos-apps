@@ -25,7 +25,7 @@ logging.basicConfig(
 _LOGGER = logging.getLogger(__name__)
 
 # Use MODEL_PATH env (set by run.sh), default /config/model
-MODEL_DIR = Path(os.getenv("MODEL_PATH", "/config/model"))
+MODEL_DIR = Path(os.getenv("MODEL_PATH", "/data/model"))
 ENCODER_PATH = MODEL_DIR / "encoder-epoch-20-avg-10.onnx"
 DECODER_PATH = MODEL_DIR / "decoder-epoch-20-avg-10.onnx"
 JOINER_PATH = MODEL_DIR / "joiner-epoch-20-avg-10.onnx"

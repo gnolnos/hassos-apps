@@ -34,8 +34,8 @@ pip3 install --no-cache-dir --break-system-packages \
     fastapi==0.104.1 \
     uvicorn==0.24.0 \
     huggingface-hub==0.20.3 \
+    cmake==3.31.6 \
     sherpa_onnx==1.12.29 || true
-
 # Ensure model directory exists
 mkdir -p "${MODEL_PATH}"
 

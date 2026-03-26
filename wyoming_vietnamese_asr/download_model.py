@@ -14,7 +14,7 @@ except ImportError:
     sys.exit(1)
 
 REPO_ID = "hynt/Zipformer-30M-RNNT-6000h"
-MODEL_DIR = Path(os.getenv("MODEL_PATH", "/config/model"))
+MODEL_DIR = Path(os.getenv("MODEL_PATH", "/data/model"))
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 FILES = [
