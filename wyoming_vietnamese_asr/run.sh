@@ -26,6 +26,7 @@ echo "====================================="
 echo "📦 Ensuring system dependencies..."
 apk add --no-cache \
     python3 \
+    python3-dev \
     py3-pip \
     bash \
     jq \
@@ -35,7 +36,8 @@ apk add --no-cache \
     build-base \
     gcc \
     g++ \
-    make || true
+    make \
+    zlib-dev || true
 
 # Install Python packages (first run only)
 echo "🔧 Installing Python packages..."
