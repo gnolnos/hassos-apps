@@ -22,26 +22,20 @@ echo "Log level: ${LOG_LEVEL}"
 echo "Model path: ${MODEL_PATH}"
 echo "====================================="
 
-# Install system dependencies (Alpine) - idempotent
+# Install system dependencies (Alpine)
 echo "📦 Ensuring system dependencies..."
 apk add --no-cache \
     python3 \
-    python3-dev \
     py3-pip \
     bash \
     jq \
     ffmpeg \
-    libsndfile \
-    cmake \
-    build-base \
-    gcc \
-    g++ \
-    make \
-    zlib-dev || true
+    libsndfile || true
 
-# Install Python packages (first run only)
+# Install Python packages using only pre-built wheels (no compilation)
 echo "🔧 Installing Python packages..."
 pip3 install --no-cache-dir --break-system-packages \
+    --only-binary=:all: \
     wyoming==1.5.0 \
     soundfile==0.12.1 \
     fastapi==0.104.1 \
