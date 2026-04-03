@@ -1,0 +1,5 @@
+build:
+  - docker build -t ghcr.io/gnolnos/truenas-api-${ARCH} .
+
+run: |
+  python3 /usr/src/truenas_api/proxy.py

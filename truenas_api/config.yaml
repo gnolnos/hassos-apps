@@ -1,0 +1,46 @@
+name: "TrueNAS API Proxy"
+description: "Proxy to TrueNAS Scale WebSocket API for Home Assistant integration"
+version: "1.0.0"
+slug: "truenas_api"
+url: "https://github.com/gnolnos/hassos-apps"
+arch:
+  - aarch64
+  - amd64
+  - armv7
+init: false
+options:
+  truenas_host:
+    description: "TrueNAS host IP or hostname"
+    type: string
+  truenas_port:
+    description: "TrueNAS WebSocket port (443 for wss, 80 for ws)"
+    type: number
+    default: 443
+  truenas_use_ssl:
+    description: "Use SSL (wss) or not (ws)"
+    type: boolean
+    default: true
+  truenas_verify_ssl:
+    description: "Verify SSL certificate"
+    type: boolean
+    default: false
+  truenas_api_key:
+    description: "TrueNAS API key"
+    type: string
+  listen_port:
+    description: "Port for this add-on to listen on"
+    type: number
+    default: 8080
+schema:
+  - truenas_host: str
+  - truenas_port: int(443, 80)
+  - truenas_use_ssl: bool
+  - truenas_verify_ssl: bool
+  - truenas_api_key: str
+  - listen_port: int(1024, 65535)
+image: "ghcr.io/gnolnos/truenas-api-{arch}"
+network:
+  - 0.0.0.0/0
+ports:
+  8080/tcp: null
+  # port mapping: <listen_port>/tcp -> same internal
