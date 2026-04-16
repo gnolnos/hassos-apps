@@ -12,11 +12,12 @@ COPY requirements.txt /app/requirements.txt
 COPY run.sh /run.sh
 
 RUN chmod a+x /run.sh
-  # Install pip before installing dependencies
+# Install pip and Python dependencies in a virtual environment
 RUN apk add --no-cache python3 py3-pip && \
+    python3 -m venv /app/venv && \
+    . /app/venv/bin/activate && \
     pip install --no-cache-dir -r /app/requirements.txt
-# Install Python dependencies
-RUN pip install --no-cache-dir -r /app/requirements.txt
+
 # Install sherpa_onnx manually if pip install fails
 RUN git clone https://github.com/k2-fsa/sherpa && \
     cd sherpa && \
