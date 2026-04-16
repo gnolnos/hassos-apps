@@ -19,6 +19,7 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 RUN git clone https://github.com/k2-fsa/sherpa && \
     cd sherpa && \
     pip install .
+RUN pip install huggingface_hub
 # Create data directory for models
 RUN mkdir -p /config
 
