@@ -13,10 +13,13 @@ COPY run.sh /run.sh
 
 RUN chmod a+x /run.sh
 
+# Install Python dependencies
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
 # Create data directory for models
 RUN mkdir -p /config
 
-EXPOSE 10400 8090
+EXPOSE 10300 8090
 
 # Use s6-overlay as init system (required by HA add-ons)
 ENTRYPOINT ["/init"]
