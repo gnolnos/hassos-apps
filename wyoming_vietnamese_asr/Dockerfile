@@ -5,26 +5,28 @@ FROM ${BUILD_FROM}
 # Set working directory
 WORKDIR /app
 
-# Install Python 3 and pip, then create a virtual environment for the application
+# Copy requirements.txt into the container
+COPY requirements.txt /app/requirements.txt
+
+# Install Python 3 and pip, then create a virtual environment and install dependencies
 RUN apk add --no-cache python3 py3-pip && \
     python3 -m venv /app/venv && \
     . /app/venv/bin/activate && \
     pip install --no-cache-dir -r /app/requirements.txt
 
-# Copy application files into the container
+# Copy remaining application files
 COPY server/ ./server/
 COPY download_model.py /app/download_model.py
-COPY requirements.txt /app/requirements.txt
 COPY run.sh /run.sh
 
-# Set executable permissions for the run script
+# Set executable permissions for run.sh
 RUN chmod +x /run.sh
 
 # Create necessary directories
 RUN mkdir -p /config
 
 # Expose application ports
-EXPOSE 10400 8090
+EXPOSE 10300 8090
 
 # Start container with s6-overlay
 ENTRYPOINT ["/init"]
