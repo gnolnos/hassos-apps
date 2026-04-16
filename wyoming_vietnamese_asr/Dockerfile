@@ -13,8 +13,8 @@ COPY run.sh /run.sh
 
 RUN chmod a+x /run.sh
   # Install pip before installing dependencies
-  RUN apk add --no-cache python3 py3-pip && \
-      pip install --no-cache-dir -r /app/requirements.txt
+RUN apk add --no-cache python3 py3-pip && \
+    pip install --no-cache-dir -r /app/requirements.txt
 # Install Python dependencies
 RUN pip install --no-cache-dir -r /app/requirements.txt
 # Install sherpa_onnx manually if pip install fails
