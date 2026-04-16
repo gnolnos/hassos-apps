@@ -1,5 +1,5 @@
 # Wyoming Vietnamese ASR Add-on - Minimal build
-ARG BUILD_FROM
+ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base:latest
 FROM ${BUILD_FROM}
 
 # Set working directory
