@@ -15,7 +15,10 @@ RUN chmod a+x /run.sh
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r /app/requirements.txt
-
+# Install sherpa_onnx manually if pip install fails
+RUN git clone https://github.com/k2-fsa/sherpa && \
+    cd sherpa && \
+    pip install .
 # Create data directory for models
 RUN mkdir -p /config
 
