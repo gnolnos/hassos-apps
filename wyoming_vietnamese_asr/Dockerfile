@@ -1,33 +1,31 @@
-# Wyoming Vietnamese ASR Add-on - Minimal build
+# Use Home Assistant base image
 ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base:latest
 FROM ${BUILD_FROM}
 
 # Set working directory
 WORKDIR /app
 
-# Copy only required files (no pip install at build time)
-COPY server/ ./server/
-COPY download_model.py /app/download_model.py
-COPY requirements.txt /app/requirements.txt
-COPY run.sh /run.sh
-
-RUN chmod a+x /run.sh
-# Install pip and Python dependencies in a virtual environment
+# Install Python 3 and pip, then create a virtual environment for the application
 RUN apk add --no-cache python3 py3-pip && \
     python3 -m venv /app/venv && \
     . /app/venv/bin/activate && \
     pip install --no-cache-dir -r /app/requirements.txt
 
-# Install sherpa_onnx manually if pip install fails
-RUN git clone https://github.com/k2-fsa/sherpa && \
-    cd sherpa && \
-    pip install .
-RUN pip install huggingface_hub
-# Create data directory for models
+# Copy application files into the container
+COPY server/ ./server/
+COPY download_model.py /app/download_model.py
+COPY requirements.txt /app/requirements.txt
+COPY run.sh /run.sh
+
+# Set executable permissions for the run script
+RUN chmod +x /run.sh
+
+# Create necessary directories
 RUN mkdir -p /config
 
-EXPOSE 10300 8090
+# Expose application ports
+EXPOSE 10400 8090
 
-# Use s6-overlay as init system (required by HA add-ons)
+# Start container with s6-overlay
 ENTRYPOINT ["/init"]
 CMD ["/run.sh"]
